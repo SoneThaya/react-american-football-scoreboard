@@ -26,7 +26,12 @@ function App(props) {
   }
 
   const addQuarter = event => {
-    setQuarter(quarter + 1)
+    if (quarter >= 4) {
+      setQuarter(1)
+    } else {
+      setQuarter(quarter + 1)
+    }
+    
   }
 
   
