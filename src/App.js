@@ -8,6 +8,7 @@ function App(props) {
   const [homeScore, setHomeScore] = useState(0)
   const [awayScore, setAwayScore] = useState(0)
   const [quarter, setQuarter] = useState(1)
+  const [ballOn, setBallOn] = useState(0)
   
 
   const homeTouchdown = event => {
@@ -28,6 +29,8 @@ function App(props) {
     setQuarter(quarter + 1)
   }
 
+  
+
 
   return (
     <div className="container">
@@ -45,7 +48,7 @@ function App(props) {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow quarter={quarter} />
+        <BottomRow quarter={quarter} ballOn={ballOn} />
       </section>
       <section className="buttons">
         <div className="homeButtons">
@@ -60,9 +63,17 @@ function App(props) {
         </div>
 
         <div className="quarters">
-          <button onClick={addQuarter} className="awayButtons__touchdown">Change Quarter</button>
+          <button onClick={addQuarter} className="awayButtons__fieldGoal">Change Quarter</button>
           
         </div>
+
+        <div className="quarters">
+          <input type='text'   />
+          <button className="awayButtons__fieldGoal">Ball On</button>
+          
+        </div>
+
+
         
       </section>
     </div>
