@@ -7,7 +7,7 @@ function App(props) {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [homeScore, setHomeScore] = useState(0)
   const [awayScore, setAwayScore] = useState(0)
-  
+  const [quarter, setQuarter] = useState(1)
   
 
   const homeTouchdown = event => {
@@ -23,7 +23,11 @@ function App(props) {
   const awayFieldGoal = event => {
     setAwayScore(homeScore + 3)
   }
-  
+
+  const addQuarter = event => {
+    setQuarter(quarter + 1)
+  }
+
 
   return (
     <div className="container">
@@ -41,7 +45,7 @@ function App(props) {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow quarter={quarter} />
       </section>
       <section className="buttons">
         <div className="homeButtons">
@@ -53,6 +57,11 @@ function App(props) {
         <div className="awayButtons">
           <button onClick={awayTouchdown} className="awayButtons__touchdown">Away Touchdown</button>
           <button onClick={awayFieldGoal} className="awayButtons__fieldGoal">Away Field Goal</button>
+        </div>
+
+        <div className="quarters">
+          <button onClick={addQuarter} className="awayButtons__touchdown">Change Quarter</button>
+          
         </div>
         
       </section>
