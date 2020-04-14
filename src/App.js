@@ -9,6 +9,7 @@ function App(props) {
   const [awayScore, setAwayScore] = useState(0)
   const [quarter, setQuarter] = useState(1)
   const [ballOn, setBallOn] = useState(0)
+  const [toGo, setToGo] = useState(10)
   
 
   const homeTouchdown = event => {
@@ -33,6 +34,12 @@ function App(props) {
     }
     
   }
+  const ballOnInput = event => {
+    setBallOn(event.target.value)
+  }
+  const toGoInput = event => {
+    setToGo(event.target.value)
+  }
 
   
 
@@ -53,7 +60,7 @@ function App(props) {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow quarter={quarter} ballOn={ballOn} />
+        <BottomRow quarter={quarter} ballOn={ballOn} toGo={toGo} />
       </section>
       <section className="buttons">
         <div className="homeButtons">
@@ -73,8 +80,15 @@ function App(props) {
         </div>
 
         <div className="quarters">
-          <input type='text'   />
-          <button className="awayButtons__fieldGoal">Ball On</button>
+          <form>
+            
+            <input type='text' placeholder='Ball on...' onChange={event => setBallOn(event.target.value)}  />
+            <button className="awayButtons__fieldGoal" onClick={ballOnInput}>Ball On</button>
+
+            <input type='text' placeholder='To go...' onChange={event => setToGo(event.target.value)}  />
+            <button className="awayButtons__fieldGoal" onClick={toGoInput}>To Go..</button>
+
+          </form>
           
         </div>
 
