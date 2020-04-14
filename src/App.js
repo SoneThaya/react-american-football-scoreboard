@@ -10,6 +10,7 @@ function App(props) {
   const [quarter, setQuarter] = useState(1)
   const [ballOn, setBallOn] = useState(0)
   const [toGo, setToGo] = useState(10)
+  const [down, setDown] = useState(1)
   
 
   const homeTouchdown = event => {
@@ -31,6 +32,14 @@ function App(props) {
       setQuarter(1)
     } else {
       setQuarter(quarter + 1)
+    }
+    
+  }
+  const addDown = event => {
+    if (down >= 4) {
+      setDown(1)
+    } else {
+      setDown(down + 1)
     }
     
   }
@@ -60,7 +69,7 @@ function App(props) {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow quarter={quarter} ballOn={ballOn} toGo={toGo} />
+        <BottomRow quarter={quarter} ballOn={ballOn} toGo={toGo} down={down} />
       </section>
       <section className="buttons">
         <div className="homeButtons">
@@ -75,8 +84,11 @@ function App(props) {
         </div>
 
         <div className="quarters">
-          <button onClick={addQuarter} className="awayButtons__fieldGoal">Change Quarter</button>
-          
+          <button onClick={addQuarter} className="awayButtons__fieldGoal">Change Quarter</button>    
+        </div>
+
+        <div className="quarters">
+          <button onClick={addDown} className="awayButtons__fieldGoal">Change Down</button> 
         </div>
 
         <div className="quarters">
